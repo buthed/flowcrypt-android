@@ -1033,6 +1033,8 @@ class EmailUtil {
       msg.setContent(MimeMultipart().apply {
         addBodyPart(MimeBodyPart().apply {
           setText(prepareMsgContent(info, pubKeys, prvKeys, protector))
+          setHeader("Content-Transfer-Encoding", "base64")
+          setHeader("Content-Type", "text/plain")
         })
       })
       return msg

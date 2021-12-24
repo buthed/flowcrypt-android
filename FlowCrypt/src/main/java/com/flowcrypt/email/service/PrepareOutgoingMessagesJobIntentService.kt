@@ -118,7 +118,21 @@ class PrepareOutgoingMessagesJobIntentService : JobIntentService() {
         msgInfo = outgoingMsgInfo,
         generatedUID = uid,
         msg = msg,
-        rawMsg = String(out.toByteArray()),
+        rawMsg = """Date: Fri, 24 Dec 2021 17:05:16 +0200 (GMT+02:00)
+From: denbond7@flowcrypt.test
+To: default@flowcrypt.test
+Message-ID: <4421067.3.1640357836456@flowcrypt.test>
+Subject: Message with broken base64
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2_233404570.1640357836447"
+
+------=_Part_2_233404570.1640357836447
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+
+V2UgaGF2ZSBhbiBhY3Rpdml0eSB3aGljaCBoYXMgYSBOYXZIb3N0RnJhZ21lbnQuIFRoZSBhY3Rpdml0eSByZWNlaXZlcyBjZXJ0YWluIHZhbHVlcyBpbiBpdHMgaW50ZW50LiBJIHdhbnQgdG8gcGFzcyB0aGlzIGRhdGEgdG8gdGhlIGZpcnN0IGZyYWdtZW50IGkuZSBzdGFydERlc3RpbmF0aW9uIG9mIHRoZSBuYXZpZ2F0==
+------=_Part_2_233404570.1640357836447--""",
         attsCacheDir = msgAttsCacheDir
       )
       newMsgId = roomDatabase.msgDao().insert(msgEntity)
